@@ -6,7 +6,7 @@ class Dashboard extends Component {
 	constructor(props) {
 		var user = firebaseApp.auth().currentUser;
     	super(props)
-    	this.state = {user: user, text:"", notes:[]}
+    	this.state = {user: user, text:"", notes:[], categories:[]}
     	this.handleSubmit = this.handleSubmit.bind(this)
     	this.handleTextChange = this.handleTextChange.bind(this)
   	}

@@ -1,11 +1,13 @@
 {
   "name": "create-react-app",
+  "type": "module",
   "version": "0.0.1",
   "private": true,
   "devDependencies": {
     "react-scripts": "0.2.3"
   },
   "dependencies": {
+    "axios": "^1.2.1",
     "bootstrap": "^5.0.0",
     "firebase": "^3.3.0",
     "react": "^15.3.1",

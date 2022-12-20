@@ -27,7 +27,7 @@ class App extends Component {
     return (
       <div className="App" style={{ overflowX: "hidden" }}>
         {this.props.children}
-        {/* <Navbar loggedin={this.state.loggedin} /> */}
+        <Navbar loggedin={this.state.loggedin} />
       </div>
     );
   }
