@@ -1,0 +1,23 @@
+# Create new saved-link
+# POST http://127.0.0.1:5001/types/new
+# Content-Type: application/x-www-form-urlencoded
+# Accept: application/json
+
+# name=Edible
+
+# Retrieve all saved-links
+GET http://127.0.0.1:5001/types
+
+# Retrieve single data (edit)
+# GET http://127.0.0.1:5001/types/edit/lTKJB
+
+# Update existed saved-link
+# POST http://127.0.0.1:5001/types/update/vvGqw
+# Content-Type: application/x-www-form-urlencoded
+# Accept: application/json
+
+# name=Plastic Containers
+
+
+# Delete data
+# GET http://127.0.0.1:5001/types/remove/lTKJB

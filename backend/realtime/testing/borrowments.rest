@@ -1,0 +1,23 @@
+# Create new saved-link
+# POST http://127.0.0.1:5001/borrowments/new
+# Content-Type: application/x-www-form-urlencoded
+# Accept: application/json
+
+# name=Electronics
+
+# Retrieve all saved-links
+GET http://127.0.0.1:5001/borrowments
+
+# Retrieve single data (edit)
+# GET http://127.0.0.1:5001/borrowments/edit/lTKJB
+
+# Update existed saved-link
+# POST http://127.0.0.1:5001/borrowments/update/vvGqw
+# Content-Type: application/x-www-form-urlencoded
+# Accept: application/json
+
+# name=Plastic Containers
+
+
+# Delete data
+# GET http://127.0.0.1:5001/borrowments/remove/lTKJB
