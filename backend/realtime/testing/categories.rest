@@ -12,11 +12,11 @@
 # GET http://127.0.0.1:5001/categories/edit/lTKJB
 
 # Update existed saved-link
-# POST http://127.0.0.1:5001/categories/update/lTKJB
-# Content-Type: application/x-www-form-urlencoded
-# Accept: application/json
+POST http://127.0.0.1:5001/categories/update/vvGqw
+Content-Type: application/x-www-form-urlencoded
+Accept: application/json
 
-# name=Plastic Containers
+name=Plastic Containers
 
 
 # Delete data

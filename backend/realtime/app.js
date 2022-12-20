@@ -237,3 +237,100 @@ app.get('/items/remove/:ID', (req, res) => {
         res.status(400).send("failed");
     });
 })
+
+
+
+
+
+// TYPE ROUTES [/types]
+app.get("/types", (req, res) => {
+    var multiRef = db.ref('types');
+    multiRef.on('value', (snapshot) => {
+        const data = snapshot.val();
+        res.status(200).send(data)
+    });
+})
+
+app.post("/types/new", (req, res) => {
+    let assignedID = makeid(5);
+    const data = {
+        type_name: req.body.name,
+        last_modified: currentDate
+    }
+    try{
+        db.ref('types/'+assignedID).set(data);
+    } catch(err) {
+        console.log(err);
+        res.status(400).send(`Request failed! Here's the problem:\n${err}`);
+    }
+    res.status(200).send('success');
+})
+
+app.get('/types/edit/:ID', (req, res) => {
+    let requesting = db.ref();
+    requesting.child("types").child(req.params.ID).get().then((snapshot) => {
+        if (snapshot.exists()) {
+            res.status(200).send(snapshot.val())
+        } else {
+            res.status(400).send("Data couln't be found")
+        }
+    }).catch((error) => {
+        console.error(error);
+    });
+})
+
+app.post("/types/update/:ID", (req, res) => {
+    const data = {
+        type_name: req.body.name,
+        last_modified: currentDate
+    }
+    try{
+        db.ref('types/'+req.params.ID).set(data);
+    } catch(err) {
+        console.log(err);
+        res.status(400).send(`Request failed! Here's the problem:\n${err}`);
+    }
+    res.status(200).send('success');
+})
+
+app.get('/types/remove/:ID', (req, res) => {
+    let requesting = db.ref();
+    requesting.child("types").child(req.params.ID).remove().then(() => {
+        res.status(200).send('success');
+    }).catch((error) => {
+        res.status(400).send("failed");
+    });
+})
+
+
+
+
+
+// BORROWMENT ROUTES [/borrowments]
+app.get("/borrowments", (req, res) => {
+    var multiRef = db.ref('borrowments');
+    multiRef.on('value', (snapshot) => {
+        const data = snapshot.val();
+        res.status(200).send(data)
+    });
+})
+
+app.post("/borrowments/new", (req, res) => {
+    let assignedID = makeid(5);
+    const data = {
+        employee: 'admin',
+        start_date: '20-12-2022',
+        end_date: '21-12-2022',
+        note: 'Test override backend',
+        status: 'Ongoing',
+        items: [['Projector', 1, 'Good'], ['Printer', 2, 'Empty']],
+        last_modified: currentDate
+    }
+    try{
+        db.ref('borrowments/'+assignedID).set(data);
+    } catch(err) {
+        console.log(err);
+        res.status(400).send(`Request failed! Here's the problem:\n${err}`);
+    }
+    res.status(200).send('success');
+})
