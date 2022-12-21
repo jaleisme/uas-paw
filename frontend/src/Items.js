@@ -111,11 +111,11 @@ class Items extends Component {
                                         <label htmlFor="name" className="form-label">Item Name</label>
                                     </div>
                                     <div className="form-floating my-3">
-                                        <input type="text" id="description" className="form-control" onChange={this.handleDescChange} placeholder="Enter Description" name="description" />
+                                        <input type="text" id="description" className="form-control" value={this.state.description} onChange={this.handleDescChange} placeholder="Enter Description" name="description" />
                                         <label htmlFor="description" className="form-label">Description</label>
                                     </div>
                                     <div className="form-floating my-3">
-                                        <select id="category" className="form-control" onChange={this.handleCategoryChange} placeholder="Enter category" name="category">
+                                        <select id="category" className="form-control" value={this.state.category} onChange={this.handleCategoryChange} placeholder="Enter category" name="category">
                                             <option selected value={""}>Select option</option>
                                             {options}
                                         </select>
