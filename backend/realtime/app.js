@@ -182,7 +182,6 @@ app.post("/items/new", (req, res) => {
     const data = {
         item_name: req.body.name,
         item_description: req.body.description,
-        item_image: req.body.image,
         item_category: req.body.category,
         item_type: req.body.type,
         item_shelf: req.body.shelf,
