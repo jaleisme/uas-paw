@@ -14,7 +14,14 @@ class Item extends Component {
 		}
 	}
   	render() {
-		return <li key={this.props.item.key} className="list-group-item d-flex justify-content-between">{this.props.item.name} <button className="btn btn-danger btn-xs" onClick={this.deleteItem}>Delete</button></li>
+		return <li key={this.props.item.key} className="list-group-item d-flex justify-content-between">
+			{this.props.item.name}
+			<div className="wrapper w-25 d-flex justify-content-around">
+				<button className="btn btn-info btn-xs">Show</button>
+				<button className="btn btn-warning btn-xs">Edit</button>
+				<button className="btn btn-danger btn-xs" onClick={this.deleteItem}>Delete</button>
+			</div>
+		</li>
   	}
 }
 
