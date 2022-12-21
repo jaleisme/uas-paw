@@ -24,10 +24,17 @@ class App extends Component {
     });
   } 
   render() {
+    var navbar;
+    if (this.state.loggedin !== false) {
+      navbar = <Navbar loggedin={this.state.loggedin} />
+    }
+    else{
+      navbar = ''
+    }
     return (
       <div className="App" style={{ overflowX: "hidden" }}>
+        {navbar}
         {this.props.children}
-        <Navbar loggedin={this.state.loggedin} />
       </div>
     );
   }
