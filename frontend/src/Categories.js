@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+// import axios from 'axios';
 import CategoryList from './CategoryList';
 import firebaseApp from './firebase/Firebase';
 
@@ -88,16 +89,23 @@ class Categories extends Component {
                 items.on('value', function(snapshot) {
                     console.log(_this.state.name);
                     var obj = snapshot.val();
+                    console.log(obj);
                     //convert object to array
                     for(var key in obj) {
                         if (key) {
+                            console.log();
                             obj[key].category = _this.state.name;
-                            firebaseApp.database().ref('items/'+key).set({
-                                name: obj[key].category.name,
-                                description: obj[key].category.description,
-                                category: obj[key].category,
-                                last_modified: obj[key].category.currentDate,                                
-                            });
+                            try {
+                                firebaseApp.database().ref('items/'+key).set({
+                                    name: obj[key].name,
+                                    description: obj[key].description,
+                                    category: obj[key].category,
+                                    last_modified: obj[key].last_modified,                                
+                                });
+                            } catch (error) {
+                                console.log(error);
+                                alert('Failed adding category, check the console')
+                            }
                         }
                     }
                 })
@@ -113,7 +121,13 @@ class Categories extends Component {
         } else {
             alert('Your data is empty! Fill the form first.')
         }
-        this.handleCancelEdit()
+        this.setState({
+            isEdit:false,
+            formTitle:"Insert New Data",
+            submissionMethod:this.handleSubmit,
+            cancelButton: ""
+        })
+        // this.handleCancelEdit()
     }
 
   	render() {
@@ -129,7 +143,7 @@ class Categories extends Component {
                     <div className="col-sm-12 col-md-4">
                         <div className="card">
                             <div className="card-body p-3">
-                                <h5 className="fw-bold">Insert New Category</h5>
+                                <h5 className="fw-bold">{this.state.formTitle}</h5>
                                 <form onSubmit={this.state.submissionMethod} className="">
                                     <div className="form-floating my-3">
                                         <input type="text" id="name" className="form-control" value={this.state.name} onChange={this.handleNameChange} placeholder="Enter Category" name="name" />

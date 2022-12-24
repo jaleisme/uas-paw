@@ -16,8 +16,8 @@ class Borrowments extends Component {
     }
     componentWillMount(){
         var _this = this;
-        var items = firebaseApp.database().ref('borrowments');
-        items.on('value', function(snapshot) {
+        var borrowments = firebaseApp.database().ref('borrowments');
+        borrowments.on('value', function(snapshot) {
             var obj = snapshot.val();
             //convert object to array
             var arr =  [];
@@ -59,10 +59,6 @@ class Borrowments extends Component {
         this.setState({note: e.target.value});
     }
     handleItemChange(e) {
-        this.setState({item: e.target.value});
-    }
-    handleItemChange(e) {
-        console.log(this.state.item);
         this.setState({item: e.target.value});
     }
     handleSubmit(e) {

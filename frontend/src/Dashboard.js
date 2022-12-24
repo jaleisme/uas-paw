@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import firebaseApp from './firebase/Firebase';
-import Notelist from './Notelist';
 
 class Dashboard extends Component {
 	constructor(props) {

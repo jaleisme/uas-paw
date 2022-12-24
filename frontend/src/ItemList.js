@@ -4,7 +4,7 @@ import Item from './Item';
 class ItemList extends Component {
   render() {
     var list = this.props.items.map( (item) => {
-      return <Item key={item.key} item={item} />
+      return <Item key={item.key} item={item} handleEdit={this.props.handleEdit} />
     });
     if (list.length === 0){
       list = <div className="card h-100">

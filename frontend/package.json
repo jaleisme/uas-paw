@@ -1,6 +1,6 @@
 {
-  "name": "create-react-app",
   "type": "module",
+  "name": "create-react-app",
   "version": "0.0.1",
   "private": true,
   "devDependencies": {

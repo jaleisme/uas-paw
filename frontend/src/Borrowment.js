@@ -9,7 +9,7 @@ class Borrowment extends Component {
 	deleteBorrowment(){
 		var proceedDelete = confirm("Are really wanted to delete this data?");
 		if(proceedDelete){
-			firebaseApp.database().ref('categories/'+this.props.item.key).remove();
+			firebaseApp.database().ref('borrowments/'+this.props.item.key).remove();
 			alert('Data deleted successfully!')
 		}
 	}

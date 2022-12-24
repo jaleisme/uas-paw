@@ -19,7 +19,6 @@ class Navbar extends Component {
   render() {
     var loginButton;
     var signup;
-    var navbar;
     if (this.props.loggedin) {
       loginButton = <a className="nav-link text-white" onClick={this.signout}>Logout</a>;
       signup = "";

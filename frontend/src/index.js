@@ -2,7 +2,6 @@ import React from 'react';
 import { render } from 'react-dom';
 import { Router, Route, IndexRoute, hashHistory } from 'react-router'
 import App from './App';
-import Home from './Home';
 import Login from './authscreens/Login';
 import Signup from './authscreens/Signup';
 import Recover from './authscreens/Recover';

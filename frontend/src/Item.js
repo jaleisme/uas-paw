@@ -14,11 +14,17 @@ class Item extends Component {
 		}
 	}
   	render() {
-		return <li key={this.props.item.key} className="list-group-item d-flex justify-content-between">
-			{this.props.item.name}
+		return <li key={this.props.item.key} className="list-group-item d-flex justify-content-between align-items-center">
+			<div className="wrapper d-flex flex-column align-items-start">
+				<span>
+					<span className="fw-bold">{this.props.item.name} </span>
+					<span className="badge bg-primary">{this.props.item.category}</span>
+				</span>
+				<small className="text-muted">{this.props.item.description}</small>
+			</div>
+			
 			<div className="wrapper w-25 d-flex justify-content-around">
-				<button className="btn btn-info btn-xs">Show</button>
-				<button className="btn btn-warning btn-xs">Edit</button>
+				<button className="btn btn-warning btn-xs" onClick={() => {this.props.handleEdit(this.props.item.key, this.props.item.name, this.props.item.description, this.props.item.category)}}>Edit</button>
 				<button className="btn btn-danger btn-xs" onClick={this.deleteItem}>Delete</button>
 			</div>
 		</li>
