@@ -19,20 +19,48 @@ class Navbar extends Component {
   render() {
     var loginButton;
     var signup;
+    var navbar;
     if (this.props.loggedin) {
-      loginButton = <button className="btn btn-default" onClick={this.signout}>Logout</button>;
+      loginButton = <a className="nav-link text-white" onClick={this.signout}>Logout</a>;
       signup = "";
     } else {
-      loginButton = <Link to="/login"><button className="btn btn-default">login</button></Link>;
-      signup = <Link to="/signup"><button className="btn btn-default">Sign up</button></Link>;
+      loginButton = <Link className="nav-link text-white" to="/login">login</Link>;
+      signup = <Link className="nav-link text-white" to="/signup">Sign up</Link>;
     }
     return (
-      <div className="Navbar">
-        <Link to="/"><button className="btn btn-default">Home</button></Link>
-        <Link to="/dashboard"><button className="btn btn-default dash-btn">Dashboard</button></Link>
-        {loginButton}
-        {signup}
-        
+      <div className="">
+        <nav className="navbar navbar-expand-lg navbar-primary bg-primary">
+          <div className="container-fluid">
+            <Link to="/" className="navbar-brand fw-bold text-white" href="#">Inventory</Link>
+            <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span className="navbar-toggler-icon"></span>
+            </button>
+            <div className="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                <li className="nav-item">
+                  <Link to="/dashboard" className="nav-link text-white">Dashboard</Link>
+                </li>
+                <li className="nav-item">
+                  <Link to="/categories" className="nav-link text-white">Categories</Link>
+                </li>
+                <li className="nav-item">
+                  <Link to="/items" className="nav-link text-white">Items</Link>
+                </li>
+                <li className="nav-item">
+                  <Link to="/borrowments" className="nav-link text-white">Borrowments</Link>
+                </li>
+              </ul>
+              <ul className="navbar-nav mb-2 mb-lg-0">
+                <li className="nav-item">
+                  {loginButton}
+                </li>
+                <li className="nav-item">
+                  {signup}
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>      
       </div>
     );
   }

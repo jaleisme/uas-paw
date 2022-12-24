@@ -6,7 +6,7 @@ class Dashboard extends Component {
 	constructor(props) {
 		var user = firebaseApp.auth().currentUser;
     	super(props)
-    	this.state = {user: user, text:"", notes:[]}
+    	this.state = {user: user, text:"", notes:[], categories:[]}
     	this.handleSubmit = this.handleSubmit.bind(this)
     	this.handleTextChange = this.handleTextChange.bind(this)
   	}
@@ -39,22 +39,8 @@ class Dashboard extends Component {
 	} 
   render() {
     return (
-      <div className="Dashboard">
-      	<br/>
-        <p>You’re signed is as: {this.state.user.displayName} | {this.state.user.email}</p>
-   
-           <div className="form-group">
-				<h4 className="note-title">Add a little note: </h4>         	
-		        <form onSubmit={this.handleSubmit} className="form-inline col-xs-12">
-		        	<input type="text" className="form-control text-input" value={this.state.text} onChange={this.handleTextChange} placeholder="Enter Text" />
-		          	<button type="submit" className="btn btn-default">Submit</button>
-		        </form>
-		        <br/> <br/>
-		        <div>
-		        	<h4>My Notes: </h4>
-		         	<Notelist items={this.state.notes} />
-		        </div> 	
-		     </div>     
+      <div className="Dashboard mt-5">
+      	<h3 className="fw-bold">Welcome back, Admin!</h3>
       </div>
     );
   }
