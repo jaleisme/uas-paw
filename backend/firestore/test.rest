@@ -1,0 +1,8 @@
+### ADD A FRIEND
+POST http://localhost:8383/addfriend
+Content-Type: application/json
+
+{
+    "name": "grape",
+    "status": "friend"
+}

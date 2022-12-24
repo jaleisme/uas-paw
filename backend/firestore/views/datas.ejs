@@ -1,0 +1,44 @@
+<%- include('template/header',{page: "datas"}) %>
+<div class="row mt-2">
+    <div class="col-12">
+        <h1><%= title %></h1>
+    </div>
+</div>
+<div class="row mt-3">
+    <div class="col-12">
+        <table class="table table-striped text-center">
+            <thead>
+                <tr>
+                    <th style="width: 8%;">ID</th>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% documents.forEach(data => { %>
+                    <tr>
+                        <td>
+                            <%= data.id %>
+                        </td>
+                        <td>
+                            <%= data.title %>
+                        </td>
+                        <td>
+                            <%= data.author %>
+                        </td>
+                        <td>
+                            <a href="/data/edit/<%= data.id %>" class="btn btn-icon btn-warning">
+                                <i class="fa-solid fa-pen"></i>
+                            </a>
+                            <button onClick="deleteData('<%= data.id %>')" class="btn btn-icon btn-danger">
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+</div>
+<%- include('template/footer',{page: "datas"}) %>

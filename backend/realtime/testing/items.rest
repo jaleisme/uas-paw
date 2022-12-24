@@ -1,0 +1,23 @@
+# Create new saved-link
+# POST http://127.0.0.1:5001/items/new
+# Content-Type: application/x-www-form-urlencoded
+# Accept: application/json
+
+# name=Projector&description=Proyektor 500 watt Sony&image=fotooo&category=Electronics&type=A456u&shelf=A1
+
+# Retrieve all items
+# GET http://127.0.0.1:5001/items
+
+# Retrieve single data (edit)
+# GET http://127.0.0.1:5001/items/edit/fk2gV
+
+# Update existed saved-link
+# POST http://127.0.0.1:5001/items/update/fk2gV
+# Content-Type: application/x-www-form-urlencoded
+# Accept: application/json
+
+# name=Projector Sony 1&description=Proyektor 500 watt Sony&image=fotooo&category=Electronics&type=A456u&shelf=A1
+
+
+# Delete data
+# GET http://127.0.0.1:5001/items/remove/fk2gV

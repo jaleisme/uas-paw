@@ -1,0 +1,24 @@
+<%- include('template/header',{page: "main"}) %>
+<div class="row mt-2">
+    <div class="col-12">
+        <h1><%= title %></h1>
+    </div>
+</div>
+<div class="row mt-3">
+    <div class="col-3">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-8">
+                        <p class="text-muted">Total Data</p>
+                        <h5><%= total %></h5>
+                    </div>
+                    <div class="col-4 text-primary d-flex align-items-center justify-content-center rounded-circle">
+                        <i class="fa-solid fa-gauge" style="font-size: 32px;"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include('template/footer',{page: "main"}) %>
