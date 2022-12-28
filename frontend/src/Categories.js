@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-// import axios from 'axios';
+// import axios from "axios";
 import CategoryList from './CategoryList';
 import firebaseApp from './firebase/Firebase';
 
 class Categories extends Component {
     constructor(props) {
     	super(props);
-    	this.state = {oldName:"", name: "", key:"", isEdit: false, cancelButton:"", formTitle:"Insert New Data", submissionMethod:this.handleSubmit, categories: []};
+    	this.state = {res:"", oldName:"", name: "", key:"", isEdit: false, cancelButton:"", formTitle:"Insert New Data", submissionMethod:this.handleSubmit, categories: []};
     	//
     	this.handleNameChange = this.handleNameChange.bind(this)
     	this.handleSubmit = this.handleSubmit.bind(this)
@@ -14,23 +14,27 @@ class Categories extends Component {
         this.handleCancelEdit = this.handleCancelEdit.bind(this)
         this.handleEditSubmit = this.handleEditSubmit.bind(this)
     }
-    componentWillMount(){
-        var _this = this;
-        var items = firebaseApp.database().ref('categories');
-        items.on('value', function(snapshot) {
-            var obj = snapshot.val();
-            //convert object to array
+
+    async componentWillMount(){
+        var temporaryThis = this;
+        fetch('http://localhost:5001/categories', {
+            crossDomain:true,
+            method: 'GET',
+            headers: {'Content-Type':'application/json'}
+          })
+        .then(response => response.json())
+        .then(responseJson => {
             var arr =  [];
-            for(var key in obj) {
-                    if (key) {
-                    var value = obj[key];
-                    obj[key].key = key;
-                    arr.push(value)
-                }
+            for (const [key, value] of Object.entries(responseJson)) {
+                var temp = {};
+                temp.value = value
+                temp.key = key
+                arr.push(temp)
             }
-            _this.setState({categories: arr });
-        });
+            temporaryThis.setState({categories: arr });
+        })
     }
+
     handleNameChange(e) {
         this.setState({name: e.target.value});
     }
@@ -62,23 +66,19 @@ class Categories extends Component {
             cancelButton: ""
         })
     }
-    handleSubmit(e) {
-        var _this = this;
-	    e.preventDefault();
-        if(this.state.name !== ''){
-            try {
-                firebaseApp.database().ref('categories/').push({
-                    name: _this.state.name,
-                });
-            } catch (error) {
-                console.log(error);
-                alert('Failed adding category, check the console')
-            }
-            alert('Category added!')
+    async handleSubmit(e) {
+        e.preventDefault();
+        fetch('http://localhost:5001/categories/new', {
+            crossDomain:true,
+            method: 'POST',
+            headers: {'Content-Type':'application/json'},
+            body: JSON.stringify({
+                name: this.state.name
+            })
+        }).then(msg => {
+            alert(msg)
             this.setState({name: ""});
-        } else {
-            alert('Your data is empty! Fill the form first.')
-        }
+        })
     }
     handleEditSubmit(e) {
         e.preventDefault();

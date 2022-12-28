@@ -7,12 +7,10 @@
     "react-scripts": "0.2.3"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^6.2.1",
-    "@fortawesome/free-solid-svg-icons": "^6.2.1",
-    "@fortawesome/react-fontawesome": "^0.2.0",
     "axios": "^1.2.1",
     "babel-plugin-macros": "^3.1.0",
     "bootstrap": "^5.0.0",
+    "cors": "^2.8.5",
     "firebase": "^3.3.0",
     "react": "^15.3.1",
     "react-bootstrap": "^0.30.3",
@@ -27,5 +25,17 @@
   },
   "eslintConfig": {
     "extends": "./node_modules/react-scripts/config/eslint.js"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }

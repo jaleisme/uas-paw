@@ -1,6 +1,7 @@
 const express = require("express");
 const multer = require('multer');
 const app = express();
+const cors = require('cors');
 const upload = multer(); 
 const { db } = require("./firebase");
 const port = 5001; // Setting Port
@@ -28,6 +29,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(upload.array()); 
 app.use(express.static('public'));
 app.use(express.json());
+app.use(cors());
 
 // Setting the app to listen on assigned port
 app.listen(port, () => console.log(`Server has started on port: ${port}\nhttp://localhost:${port}\n`));
@@ -41,6 +43,7 @@ app.get("/tests", (req, res) => {
     var multiRef = db.ref('tests');
     multiRef.on('value', (snapshot) => {
     const data = snapshot.val();
+    console.log(data);
     res.status(200).send(data)
     });
 })
@@ -115,12 +118,13 @@ app.get("/categories", (req, res) => {
 
 app.post("/categories/new", (req, res) => {
     let assignedID = makeid(5);
+    console.log(req.body.name);
     const data = {
-        category_name: req.body.name,
+        name: req.body.name,
         last_modified: currentDate
     }
     try{
-        db.ref('categories/'+assignedID).set(data);
+        db.ref('categories/').push(data);
     } catch(err) {
         console.log(err);
         res.status(400).send(`Request failed! Here's the problem:\n${err}`);
